@@ -1,0 +1,18 @@
+{
+    "name": "maurodnz/gdtf",
+    "description": "Basic PHP library for interfacing with the General Device Type Format",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Maurodnz\\Gdtf\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "maurodnz"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {}
+}
