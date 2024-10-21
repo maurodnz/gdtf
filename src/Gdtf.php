@@ -1,20 +1,29 @@
 <?php
 
-namespace maurodnz\GDTF;
+namespace maurodnz\Gdtf;
 
 use Exception;
 use ZipArchive;
 
-class GDTF
+class Gdtf
 {
+    /**
+     *
+     * @var string
+     */
     private $filepath;
+
+    /**
+     *
+     * @var string
+     */
     private $xml;
 
     public function __construct(string $path)
     {
         $this->filepath = $path;
 
-        if (!file_exists($path) || pathinfo($path, PATHINFO_EXTENSION !== 'gdtf')) {
+        if (!file_exists($path) || pathinfo($path, PATHINFO_EXTENSION) !== 'gdtf') {
             throw new Exception("GDTF file is invalid or not found.");
         }
 
