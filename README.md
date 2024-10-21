@@ -9,11 +9,11 @@ Add these lines to your `composer.json` file
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/tuo-utente/tuo-modulo.git"
+            "url": "https://github.com/maurodnz/gdtf.git"
         }
     ],
     "require": {
-        "tuo-utente/tuo-modulo": "dev-main"
+        "maurodnz/gdtf": "dev-main"
     }
 }
 ```
