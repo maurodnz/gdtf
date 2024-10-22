@@ -1,6 +1,6 @@
 <?php
 
-namespace maurodnz\Gdtf;
+namespace Maurodnz\Gdtf;
 
 use Exception;
 use ZipArchive;
