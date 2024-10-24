@@ -1,6 +1,6 @@
 <?php
 
-namespace Maurodnz\Gdtf;
+namespace Gdtf;
 
 use Exception;
 use ZipArchive;
@@ -19,6 +19,8 @@ class Gdtf
      */
     private $xml;
 
+    public $fixture;
+
     public function __construct(string $path)
     {
         $this->filepath = $path;
@@ -27,16 +29,6 @@ class Gdtf
             throw new Exception("GDTF file is invalid or not found.");
         }
 
-        $this->xml = $this->extract_definition_xml();
-    }
-
-    public function get_content()
-    {
-        return $this->xml;
-    }
-
-    private function extract_definition_xml()
-    {
         $zip = new ZipArchive();
 
         if ($zip->open($this->filepath) === true) {
@@ -46,12 +38,15 @@ class Gdtf
                 throw new Exception("description.xml file missing.");
             }
 
-            $content = $zip->getFromIndex($xml_index);
+            $this->xml = $zip->getFromIndex($xml_index);
             $zip->close();
-
-            return $content;
         } else {
             throw new Exception("Unable to open GDTF archive.");
         }
+    }
+
+    public function get_content()
+    {
+        return $this->xml;
     }
 }
