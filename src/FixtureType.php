@@ -4,6 +4,7 @@ namespace Gdtf;
 
 use Gdtf\Type\DmxMode;
 use Gdtf\Type\Protocols;
+use Gdtf\Type\Revisions;
 use SimpleXMLElement;
 
 class FixtureType
@@ -18,6 +19,7 @@ class FixtureType
     private string $fixture_type_id;
 
     private array $dmx_modes;
+    private array $revisions;
     private array $protocols;
 
     public function __construct(string $xml)
@@ -49,6 +51,7 @@ class FixtureType
             $this->dmx_modes = [];
         }
 
+        $this->revisions = (new Revisions($this->_root->FixtureType?->Revisions))->get();
         $this->protocols = (new Protocols($this->_root->FixtureType?->Protocols))->get();
     }
 
@@ -59,5 +62,6 @@ class FixtureType
     public function getDescription(): string { return $this->description; }
     public function getFixtureTypeId(): string { return $this->fixture_type_id; }
     public function getDmxModes(): array { return $this->dmx_modes; }
+    public function getRevisions(): array { return $this->revisions; }
     public function getProtocols(): array { return $this->protocols; }
 }
