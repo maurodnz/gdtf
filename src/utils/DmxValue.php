@@ -10,7 +10,7 @@ class DmxValue
     public function __construct(string $value)
     {
         $this->value = (int) explode('/', $value)[0];
-        $this->value = (int) explode('/', $value)[1];
+        $this->bits = (int) explode('/', $value)[1];
     }
 
     public function getValue()      { return $this->value; }

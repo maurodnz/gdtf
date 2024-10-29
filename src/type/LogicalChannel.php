@@ -4,10 +4,10 @@ namespace Gdtf\Type;
 
 class LogicalChannel extends BaseNode
 {
-    private string $attribute;
-    private string $master;
-    private string $snap;
-    private array $channel_functions;
+    protected string $attribute;
+    protected string $master;
+    protected string $snap;
+    protected array $channel_functions;
 
     public function __construct($xml_node)
     {        
@@ -26,4 +26,9 @@ class LogicalChannel extends BaseNode
             $this->channel_functions[] = new ChannelFunction($node);
         }
     }
+
+    public function getAttribute(): string { return $this->attribute; }
+    public function getMaster(): string { return $this->master; }
+    public function getSnap(): string { return $this->snap; }
+    public function getChannelFunctions(): array { return $this->channel_functions; }
 }

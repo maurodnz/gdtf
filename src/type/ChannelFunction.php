@@ -4,15 +4,15 @@ namespace Gdtf\Type;
 
 class ChannelFunction extends BaseNode
 {
-    private string $attribute;
-    private string $name;
-    private string $dmx_from;
-    private string $default;
-    private string $mode_from;
-    private string $mode_to;
-    private string $physical_from;
-    private string $physical_to;
-    private array $channel_sets;
+    protected string $attribute;
+    protected string $name;
+    protected string $dmx_from;
+    protected string $default;
+    protected string $mode_from;
+    protected string $mode_to;
+    protected string $physical_from;
+    protected string $physical_to;
+    protected array $channel_sets;
 
     public function __construct($xml_node)
     {
@@ -36,4 +36,14 @@ class ChannelFunction extends BaseNode
             $this->channel_sets[] = new ChannelSet($node);
         }
     }
+
+    public function getAttribute(): string { return $this->attribute; }
+    public function getName(): string { return $this->name; }
+    public function getDmxFrom(): string { return $this->dmx_from; }
+    public function getDefault(): string { return $this->default; }
+    public function getModeFrom(): string { return $this->mode_from; }
+    public function getModeTo(): string { return $this->mode_to; }
+    public function getPhysicalFrom(): string { return $this->physical_from; }
+    public function getPhysicalTo(): string { return $this->physical_to; }
+    public function getChannelSets(): array { return $this->channel_sets; }
 }

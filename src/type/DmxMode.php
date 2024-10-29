@@ -4,9 +4,9 @@ namespace Gdtf\Type;
 
 class DmxMode extends BaseNode
 {
-    private string $name;
-    private array $channels;
-    private array $relations;
+    protected string $name;
+    protected array $channels;
+    protected array $relations;
 
     public function __construct($xml_node)
     {
@@ -27,4 +27,9 @@ class DmxMode extends BaseNode
             $this->channels = [];
         }
     }
+
+    public function getName() : string { return $this->name; }
+    public function getChannels() : array { return $this->channels; }
+    public function getRelations() : array { return $this->relations; }
+    public function channels() : int { return count($this->channels); }
 }

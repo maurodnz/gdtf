@@ -11,16 +11,16 @@ class FixtureType
 {
     private $_root;
 
-    private string $name;
-    private string $short_name;
-    private string $long_name;
-    private string $manufacturer;
-    private string $description;
-    private string $fixture_type_id;
+    protected string $name;
+    protected string $short_name;
+    protected string $long_name;
+    protected string $manufacturer;
+    protected string $description;
+    protected string $fixture_type_id;
 
-    private array $dmx_modes;
-    private array $revisions;
-    private array $protocols;
+    protected array $dmx_modes;
+    protected array $revisions;
+    protected array $protocols;
 
     public function __construct(string $xml)
     {
@@ -30,7 +30,7 @@ class FixtureType
             $this->read_xml();
     }
 
-    private function read_xml()
+    protected function read_xml()
     {
         $this->name = (string) $this->_root->FixtureType['Name'];
         $this->short_name = (string) $this->_root->FixtureType['ShortName'];

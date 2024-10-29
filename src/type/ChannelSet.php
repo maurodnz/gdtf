@@ -4,11 +4,11 @@ namespace Gdtf\Type;
 
 class ChannelSet extends BaseNode
 {
-    private string $name;
-    private string $dmx_from;
-    private float $physical_from;
-    private float $physical_to;
-    private int $wheel_slot_index;
+    protected string $name;
+    protected string $dmx_from;
+    protected float $physical_from;
+    protected float $physical_to;
+    protected int $wheel_slot_index;
 
     public function __construct($xml_node)
     {
@@ -22,4 +22,11 @@ class ChannelSet extends BaseNode
     protected function read_xml($xml_node)
     {   
     }
+
+    public function getName(): string { return $this->name; }
+    public function getDmxFrom(): string { return $this->dmx_from; }
+    public function getPhysicalFrom(): float { return $this->physical_from; }
+    public function getPhysicalTo(): float { return $this->physical_to; }
+    public function getWheelSlotIndex(): int { return $this->wheel_slot_index; }
+
 }

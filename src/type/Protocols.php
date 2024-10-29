@@ -4,7 +4,7 @@ namespace Gdtf\Type;
 
 class Protocols extends BaseNode
 {
-    private array $protocols = [];
+    protected array $protocols = [];
 
     public function __construct($xml_node)
     {

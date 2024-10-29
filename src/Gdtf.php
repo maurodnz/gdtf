@@ -2,50 +2,39 @@
 
 namespace Gdtf;
 
-use Exception;
-use ZipArchive;
+use Gdtf\Exception\InvalidFile;
+use Gdtf\Exception\NotFound;
 
 class Gdtf
 {
-    /**
-     *
-     * @var string
-     */
-    private $filepath;
-
-    /**
-     *
-     * @var string
-     */
-    private $xml;
-
-    public $fixture;
+    private string $filepath;
+    private string $xml;
 
     public function __construct(string $path)
     {
         $this->filepath = $path;
 
         if (!file_exists($path) || pathinfo($path, PATHINFO_EXTENSION) !== 'gdtf') {
-            throw new Exception("GDTF file is invalid or not found.");
+            throw new InvalidFile("GDTF file is invalid or not found.");
         }
 
-        $zip = new ZipArchive();
+        $zip = new \ZipArchive();
 
         if ($zip->open($this->filepath) === true) {
             $xml_index = $zip->locateName("description.xml");
 
             if ($xml_index === false) {
-                throw new Exception("description.xml file missing.");
+                throw new NotFound("description.xml file missing.");
             }
 
             $this->xml = $zip->getFromIndex($xml_index);
             $zip->close();
         } else {
-            throw new Exception("Unable to open GDTF archive.");
+            throw new InvalidFile("Unable to open GDTF archive.");
         }
     }
 
-    public function get_content()
+    public function get_content() : string
     {
         return $this->xml;
     }

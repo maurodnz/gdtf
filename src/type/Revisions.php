@@ -9,7 +9,7 @@ class Revisions extends BaseNode
      *
      * @var array
      */
-    private array $revisions = [];
+    protected array $revisions = [];
 
     public function __construct($xml_node)
     {
