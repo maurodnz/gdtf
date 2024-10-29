@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Gdtf\\": "src/"
+            "Gdtf\\": "src/Gdtf/"
         }
     },
     "minimum-stability": "beta"
