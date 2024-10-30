@@ -31,5 +31,14 @@ class DmxMode extends BaseNode
     public function getName() : string { return $this->name; }
     public function getChannels() : array { return $this->channels; }
     public function getRelations() : array { return $this->relations; }
-    public function channels() : int { return count($this->channels); }
+    public function channels(bool $include_virtual = false) : int {
+        $_counter = 0;
+
+        foreach ($this->getChannels() as $c) {
+            if ($c->isVirtual() && !$include_virtual) { continue; }
+            $_counter++;
+        }
+
+        return $_counter;
+    }
 }
