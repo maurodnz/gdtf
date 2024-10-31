@@ -21,7 +21,7 @@ class DmxChannel extends BaseNode
         $this->initial_function = (string) $xml_node['InitialFunction'];
         $this->offset = (string) $xml_node['Offset'];
 
-        $this->_virtual = ($this->offset == 0);
+        $this->_virtual = empty($this->offset);
 
         $this->read_xml($xml_node);
     }
