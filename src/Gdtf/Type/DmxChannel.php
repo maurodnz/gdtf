@@ -8,7 +8,7 @@ class DmxChannel extends BaseNode
     protected string $geometry;
     protected string $highlight;
     protected string $initial_function;
-    protected int $offset;
+    protected string $offset;
     protected array $logical_channels;
     
     private bool $_virtual;
@@ -19,7 +19,7 @@ class DmxChannel extends BaseNode
         $this->geometry = (string) $xml_node['Geometry'];
         $this->highlight = (string) $xml_node['Highlight'];
         $this->initial_function = (string) $xml_node['InitialFunction'];
-        $this->offset = (int) $xml_node['Offset'];
+        $this->offset = (string) $xml_node['Offset'];
 
         $this->_virtual = ($this->offset == 0);
 
@@ -39,7 +39,7 @@ class DmxChannel extends BaseNode
     public function getGeometry(): string { return $this->geometry; }
     public function getHighlight(): string { return $this->highlight; }
     public function getInitialFunction(): string { return $this->initial_function; }
-    public function getOffset(): int { return $this->offset; }
+    public function getOffset(): string { return $this->offset; }
     public function getLogicalChannels(): array { return $this->logical_channels; }
     public function isVirtual() : bool { return $this->_virtual; }
 }
