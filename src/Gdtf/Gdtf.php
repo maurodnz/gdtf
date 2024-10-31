@@ -14,8 +14,12 @@ class Gdtf
     {
         $this->filepath = $path;
 
-        if (!file_exists($path) || pathinfo($path, PATHINFO_EXTENSION) !== 'gdtf') {
-            throw new InvalidFile("GDTF file is invalid or not found.");
+        if (!file_exists($path)) {
+            throw new NotFound("GDTF file not found in provided path.");
+        }
+
+        if (pathinfo($path, PATHINFO_EXTENSION) !== 'gdtf') {
+            throw new InvalidFile("GDTF file is invalid.");
         }
 
         $zip = new \ZipArchive();
